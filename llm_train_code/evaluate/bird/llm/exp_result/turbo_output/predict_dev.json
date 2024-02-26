@@ -1,0 +1,3 @@
+{
+    "0": "```sql\nSELECT MAX(Percent_Eligible_Free)\nFROM frpm\nWHERE County_Code = '101' AND Educational_Option_Type = 'National School Lunch Program';\n```\nExplanation:\n\n* The `frpm` table is joined with the `schools` table on the `CDSCode` column using a foreign key constraint.\n* The `SELECT` statement filters the rows from the `frpm` table to only include those from Alameda County (County\\_Code = '101') and with an educational option type of National School Lunch Program (Educational\\_Option\\_Type = 'National School Lunch Program').\n* The `MAX` function is used to find the highest value of `Percent_Eligible_Free` from the filtered rows.\t----- bird -----\tcalifornia_schools"
+}

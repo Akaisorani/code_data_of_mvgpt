@@ -1,0 +1,186 @@
+{
+    "table_id": "rpt_multibp_bpr_aid_all_d",
+    "table_name": "万相台每日流量和效果表",
+    "column": [
+    {
+        "header_id": "item_id",
+        "header_name": "宝贝ID",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "price_level",
+        "header_name": "价格带层级:1-5",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "price_range",
+        "header_name": "价格带区间",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "cate_id",
+        "header_name": "行业ID",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "cate_name",
+        "header_name": "行业名称",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "cate_level1_id",
+        "header_name": "一级类目ID",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "cate_level1_name",
+        "header_name": "一级类目名称",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "cate_level2_id",
+        "header_name": "二级类目ID",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "cate_level2_name",
+        "header_name": "二级类目名称",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "brand_id",
+        "header_name": "品牌id",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "brand_name",
+        "header_name": "品牌名称",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "xcat1_id",
+        "header_name": "天猫类目id",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "xcat1_name",
+        "header_name": "天猫类目名称",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "cust_type",
+        "header_name": "访客在店铺的潜新老状态",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_item_old",
+        "header_name": "是否宝贝老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_shop_old",
+        "header_name": "是否店铺老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_brand_old",
+        "header_name": "是否品牌老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_cate_old",
+        "header_name": "是否叶子类目老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_cate2_old",
+        "header_name": "是否二级类目老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_cate1_old",
+        "header_name": "是否一级类目老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "is_xcat1_old",
+        "header_name": "是否天猫行业老客",
+        "header_type": "STRING"
+    },
+    {
+        "header_id": "reserve_price",
+        "header_name": "当前价格(元)",
+        "header_type": "DOUBLE"
+    },
+    {
+        "header_id": "item_price",
+        "header_name": "商品价格",
+        "header_type": "DOUBLE"
+    },
+    {
+        "header_id": "ipv_1d",
+        "header_name": "最近一天ipv数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "se_clk_cnt",
+        "header_name": "自然搜索的点击次数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "alipay_cnt",
+        "header_name": "成交笔数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "alipay_amt",
+        "header_name": "成交金额(元)",
+        "header_type": "DOUBLE"
+    },
+    {
+        "header_id": "alipay_quantity",
+        "header_name": "成交件数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "cart_cnt",
+        "header_name": "加购数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "col_item_cnt",
+        "header_name": "收藏商品数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "col_shop_cnt",
+        "header_name": "收藏店铺数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "prepay_cnt",
+        "header_name": "预售支付定金笔数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "prepay_amt",
+        "header_name": "预售总成交金额(元)",
+        "header_type": "DOUBLE"
+    },
+    {
+        "header_id": "prepay_deposit_amt",
+        "header_name": "预售支付定金金额(元）",
+        "header_type": "DOUBLE"
+    },
+    {
+        "header_id": "prepay_quantity",
+        "header_name": "预售成交件数",
+        "header_type": "BIGINT"
+    },
+    {
+        "header_id": "thedate",
+        "header_name": "业务日期",
+        "header_type": "Date"
+    }
+]
+}

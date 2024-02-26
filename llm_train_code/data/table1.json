@@ -1,0 +1,381 @@
+{
+    "table_id": "rpt_multibp_bpr_aid_all_d",
+    "table_name": "万相台每日流量和效果表",
+    "column": [
+        {
+            "header_id": "thedate",
+            "header_name": "日期",
+            "header_type": "Date"
+        },
+        {
+            "header_id": "member_id",
+            "header_name": "广告主ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "product_id",
+            "header_name": "产品ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "creative_id",
+            "header_name": "创意ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "strategy_campaign_id",
+            "header_name": "策略中心计划id",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "strategy_scene_id",
+            "header_name": "策略中心场景ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "marketing_scene",
+            "header_name": "订单类型",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "marketing_aim",
+            "header_name": "优化目标",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "strategy_creative_id",
+            "header_name": "策略创意ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "promotion_type",
+            "header_name": "主体类型",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "promotion_entity_id",
+            "header_name": "主体id",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "strategy_target_id",
+            "header_name": "策略定向id",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "aid",
+            "header_name": "访客ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "cust_type",
+            "header_name": "访客标识: 1-潜客,2-新客,3-老客",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "is_hy",
+            "header_name": "是否会员: 1-会员,0-非会员",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "is_offline_hy",
+            "header_name": "是否线下会员: 1-线下会员,0-非线下会员",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "aid_buy_cate1s",
+            "header_name": "一级类目老客标签",
+            "header_type": "STRING"
+        },
+        {
+            "header_id": "aid_buy_cate2s",
+            "header_name": "宝贝一级类目下二级类目老客标签",
+            "header_type": "STRING"
+        },
+        {
+            "header_id": "item_cate1_id",
+            "header_name": "宝贝一级类目ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "is_item_cate1_old",
+            "header_name": "是否宝贝一级类目老客: 1-一级类目老客,0-非一级类目老客",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "is_fans",
+            "header_name": "是否粉丝: 1-是,0-否",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "target_crowd",
+            "header_name": "拉新快目标新客: ShopNew-店铺新客, brandNew-品牌新客",
+            "header_type": "STRING"
+        },
+        {
+            "header_id": "wxt_category_crowd_type",
+            "header_name": "拉新快新客具体类型",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "special_campaign_filter",
+            "header_name": "特殊计划过滤器",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "cust_type1",
+            "header_name": "店铺消费者新分层: 1-潜客,2-访客新客,3-兴趣新客,4-首购,5-复购",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "item_brand_id",
+            "header_name": "商品的品牌ID",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "item_brand_deeplink",
+            "header_name": "aid与商品品牌的deeplink状态",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "aid_crowd_ids",
+            "header_name": "行业人群ID:列表多值逗号分隔",
+            "header_type": "STRING"
+        },
+        {
+            "header_id": "f_impression",
+            "header_name": "展现量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "f_click",
+            "header_name": "点击",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "target_num",
+            "header_name": "任务完成量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "afeed_f_impression",
+            "header_name": "短视频双排列一跳pv",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "afeed_f_click",
+            "header_name": "短视频双排列一跳点击",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_itemcol_dir_num",
+            "header_name": "点击直接宝贝收藏数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_itemcol_inshop_num",
+            "header_name": "点击宝贝收藏数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_shopcol_dir_num",
+            "header_name": "点击店铺收藏量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_cart_dir_num",
+            "header_name": "点击宝贝直接加购量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_cart_inshop_num",
+            "header_name": "点击加购数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_gmv_dir_num",
+            "header_name": "点击gmv直接成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_gmv_dir_amt",
+            "header_name": "点击gmv直接成交金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_gmv_inshop_num",
+            "header_name": "点击gmv店内成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_gmv_inshop_amt",
+            "header_name": "点击gmv店内成交金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_alipay_dir_num",
+            "header_name": "点击ALIPAY直接成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_alipay_dir_amt",
+            "header_name": "点击ALIPAY直接成交金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_alipay_inshop_num",
+            "header_name": "点击成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_alipay_inshop_amt",
+            "header_name": "点击成交金额",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_prepay_dir_num",
+            "header_name": "点击预售直接成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_prepay_dir_amt",
+            "header_name": "点击预售直接成交金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_prepay_inshop_num",
+            "header_name": "点击预售店内成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_prepay_inshop_amt",
+            "header_name": "点击预售店内成交金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_inshop_num",
+            "header_name": "点击进店次数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_shopping_num",
+            "header_name": "点击购物金充值笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_shopping_amt",
+            "header_name": "点击购物金充值金额",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "show_itemcol_inshop_num",
+            "header_name": "展现宝贝收藏量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_cart_inshop_num",
+            "header_name": "展现加购量(店内)",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_alipay_inshop_num",
+            "header_name": "展现alipay店内成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_alipay_inshop_amt",
+            "header_name": "展现alipay店内成交金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "show_prepay_inshop_num",
+            "header_name": "展现预售店内成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_prepay_inshop_amt",
+            "header_name": "展现预售店内成交笔数金额(元)",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "show_inshop_num",
+            "header_name": "展现进店次数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_shopping_num",
+            "header_name": "展现购物金充值笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_shopping_amt",
+            "header_name": "展现购物金充值金额",
+            "header_type": "DOUBLE"
+        },
+        {
+            "header_id": "click_deep_inshop_num",
+            "header_name": "点击深度进店次数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "ad_click_alipay_inshop_num",
+            "header_name": "广告ALIPAY店内成交笔数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_follow_inshop_num",
+            "header_name": "点击关注数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_comment_inshop_num",
+            "header_name": "点击评论数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_favor_inshop_num",
+            "header_name": "点击点赞数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_share_num",
+            "header_name": "点击分享量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "valid_watch_num",
+            "header_name": "双排列归因的3s观看量+上下切结算的观看量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_live_watch_num",
+            "header_name": "点击引导短视频引导到直播间的直播观看量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_rh_inshop_num",
+            "header_name": "点击引导入会量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_lz_inshop_num",
+            "header_name": "留资量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "click_ww_inshop_num",
+            "header_name": "旺旺咨询数",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "show_rh_inshop_num",
+            "header_name": "展现引导入会量",
+            "header_type": "BIGINT"
+        },
+        {
+            "header_id": "f_charge",
+            "header_name": "财务消耗(元)",
+            "header_type": "DOUBLE"
+        }
+    ]
+}
