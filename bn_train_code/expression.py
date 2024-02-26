@@ -37,7 +37,7 @@ class Predicate(object):
             raise Exception("predicate_str type error, should be string")
 
         # unit: whole, identifier, operator, value
-        pred_units=re.findall(r"((new_dmp\.[.|\w]+) (IN|=|>|<|>=|<=|!=) (\(.+?\)|'\w+'|-?\d+))", predicate_str)
+        pred_units=re.findall(r"((new_XXX\.[.|\w]+) (IN|=|>|<|>=|<=|!=) (\(.+?\)|'\w+'|-?\d+))", predicate_str)
         if len(pred_units)==0:
             raise Exception("predicate format error, did not find legal predicate")
         unit=pred_units[0][1:4] # only use the first match, drop others
@@ -203,7 +203,7 @@ class Expression(object):
             raise Exception("exp type error, should be string")
 
         # TODO add parenthesis expression parser to keep structure information (and or)
-        pred_units_result=re.findall(r"((new_dmp\.[.|\w]+) (IN|=|>|<|>=|<=|!=) (\(.+?\)|'\w+'|-?\d+))", exp)
+        pred_units_result=re.findall(r"((new_XXX\.[.|\w]+) (IN|=|>|<|>=|<=|!=) (\(.+?\)|'\w+'|-?\d+))", exp)
         pred_units=[x[1:4] for x in pred_units_result]
         pred_units_ostr=[x[0] for x in pred_units_result]
 

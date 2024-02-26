@@ -183,7 +183,7 @@ def do_model_request(engine, prompt, max_tokens, temperature, stop):
     params['model'] = "analyticai-13b-mama_sql_v530"
     params['messages'] = [{'role': 'user', 'content': prompt}]
     print("models request " + str(params))
-    res = requests.post("http://ai-models-provider.alimama.com/v1/chat/completions", data=json.dumps(params, ensure_ascii=False).encode("utf8"))
+    res = requests.post("http://ai-models-provider.XXX.com/v1/chat/completions", data=json.dumps(params, ensure_ascii=False).encode("utf8"))
     data = None
     if res.status_code == 200:
         data = res.json()

@@ -19,7 +19,7 @@ def execute_dolphin_sql(sql):
     executeSqlParamMap = {'nodeId': 2629, 'cluster': 3, 'engine': 'hologres', 'sql': sql}
     params = {'param': executeSqlParamMap, 'authentication': authentication}
     print(params)
-    response = requests.post('http://aurora2.alibaba-inc.com' + '/auroraAPI/auroSql/executeNl2Sql',
+    response = requests.post('http://aurora2.XXX-inc.com' + '/auroraAPI/auroSql/executeNl2Sql',
                              data=json.dumps(params), headers=headers)
     # logger.info("execute dolphin sql cost " + str(time.time() - start_time))
     if response.status_code != 200:
@@ -36,7 +36,7 @@ def execute_dolphin_sql(sql):
     executeSqlParamMap = {'jobId': jobId, 'taskId': taskId}
     params = {'param': executeSqlParamMap, 'authentication': authentication}
     time.sleep(3)
-    response = requests.post('http://aurora2.alibaba-inc.com' + '/auroraAPI/auroSql/getResult', data=json.dumps(params),
+    response = requests.post('http://aurora2.XXX-inc.com' + '/auroraAPI/auroSql/getResult', data=json.dumps(params),
                              headers=headers)
     if response.status_code != 200:
         err_msg = "call dolphin error, status code is " + str(response.status_code)
@@ -59,7 +59,7 @@ def send_tool_request(request, serviceName, functionName):
         'Accept': '*/*',
         'Content-Type': 'application/json;charset=UTF-8'
     }
-    response = requests.post('http://aurora2.alibaba-inc.com' + '/auroraAPI/ai-service/fass-service', data=json.dumps(params), headers=headers)
+    response = requests.post('http://aurora2.XXX-inc.com' + '/auroraAPI/ai-service/fass-service', data=json.dumps(params), headers=headers)
     if response.status_code != 200:
         err_msg = "call aurora error, status code is " + str(response.status_code)
         raise Exception(err_msg)
@@ -78,8 +78,8 @@ def get_prompt_trans(scene, prompt):
         'Accept': '*/*',
         'Content-Type': 'application/json;charset=UTF-8'
     }
-    response = requests.post('http://pre2-aurora.alibaba-inc.com' + '/auroraAPI/copilot/fass-service', data=json.dumps(params), headers=headers)
-    # response = requests.post('http://pre2-aurora.alibaba-inc.com' + '/auroraAPI/ai-service/fass-service', data=json.dumps(params), headers=headers)
+    response = requests.post('http://pre2-aurora.XXX-inc.com' + '/auroraAPI/copilot/fass-service', data=json.dumps(params), headers=headers)
+    # response = requests.post('http://pre2-aurora.XXX-inc.com' + '/auroraAPI/ai-service/fass-service', data=json.dumps(params), headers=headers)
     if response.status_code != 200:
         err_msg = "call aurora error, status code is " + str(response.status_code)
         raise Exception(err_msg)
@@ -117,7 +117,7 @@ def execute_tool_request(request):
         tool_request['ds'] = ds
         tool_request['adgroupId'] = adgroup_id
         tool_request['requestType'] = 'ImpPlungeSop'
-        result = send_tool_request(json.dumps(tool_request), 'fg-dmp-app-120', 'CmopSmartSop')
+        result = send_tool_request(json.dumps(tool_request), 'fg-XXX-app-120', 'CmopSmartSop')
         return result
     if tool_id == 'kr':
         adgroup_id = params['adgroup_id']
@@ -137,7 +137,7 @@ def execute_tool_request(request):
         parameter['bagIdList'] = bagIdList
         tool_request['parameter'] = parameter
 
-        result = send_tool_request(json.dumps(tool_request, ensure_ascii=False), 'fg-dmp-app-120', 'Cmopengine')
+        result = send_tool_request(json.dumps(tool_request, ensure_ascii=False), 'fg-XXX-app-120', 'Cmopengine')
         return result
 
 if __name__ == '__main__':

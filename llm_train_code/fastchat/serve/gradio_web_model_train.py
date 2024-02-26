@@ -41,7 +41,7 @@ controller_url = None
 enable_moderation = False
 models = []
 default_aurora_client = AuroraClient()
-global_url_base = 'https://pre2-aurora.alibaba-inc.com'
+global_url_base = 'https://pre2-aurora.XXX-inc.com'
 default_headers = {
             'Connection': 'keep-alive',
             'Accept': '*/*',
@@ -49,7 +49,7 @@ default_headers = {
         }
 oss_models = []
 python_path = 'python3'
-nebulactl_path = 'nebulactl'
+XXXctl_path = 'XXXctl'
 
 def login(username, password):
     print(username, password)
@@ -80,14 +80,14 @@ def checkLogInFromAurora(userId):
     else:
         return False
 
-def set_global_vars(controller_url_, enable_moderation_, models_, oss_models_, python_path_, nebulactl_path_):
-    global controller_url, enable_moderation, models, oss_models, python_path, nebulactl_path
+def set_global_vars(controller_url_, enable_moderation_, models_, oss_models_, python_path_, XXXctl_path_):
+    global controller_url, enable_moderation, models, oss_models, python_path, XXXctl_path
     controller_url = controller_url_
     enable_moderation = enable_moderation_
     models = models_
     oss_models = oss_models_
     python_path = python_path_
-    nebulactl_path = nebulactl_path_
+    XXXctl_path = XXXctl_path_
 
 
 def get_oss_models():
@@ -155,7 +155,7 @@ notice_markdown = """
 """
 
 learn_more_markdown = """
-Alimama
+XXX
 """
 
 block_css = (
@@ -184,7 +184,7 @@ def train_process(data_file, model_name, base_model, queue):
         model_name + '.json',
         base_model,
         queue,
-        nebulactl_path,
+        XXXctl_path,
         model_name,
     )
 
@@ -305,7 +305,7 @@ def train_ui():
                 base_model = gr.Dropdown(label="基础模型",
                                          value=oss_models[0] if len(oss_models) > 0 else "",
                                          choices=oss_models)
-                queue = gr.Dropdown(label="队列", value='kgb_llm', choices=['alimama_dolphin_llm', 'kgb_llm'])
+                queue = gr.Dropdown(label="队列", value='kgb_llm', choices=['XXX_dolphin_llm', 'kgb_llm'])
                 model_name = gr.Textbox(label="输出模型名称")
         with gr.Row():
             train = gr.Button(value='训练')
@@ -373,7 +373,7 @@ def build_demo():
     return demo
 
 
-# share=False must be set to meet the data security policy of Alibaba
+# share=False must be set to meet the data security policy of XXX
 if __name__ == "__main__":
     gr.close_all()
     parser = argparse.ArgumentParser()
@@ -382,7 +382,7 @@ if __name__ == "__main__":
     parser.add_argument("--controller-url", type=str, default="http://localhost:21001")
     parser.add_argument("--concurrency-count", type=int, default=10)
     parser.add_argument("--python_path", type=str, default="python3")
-    parser.add_argument("--nebulactl_path", type=str, default="nebulactl")
+    parser.add_argument("--XXXctl_path", type=str, default="XXXctl")
 
     parser.add_argument(
         "--model-list-mode", type=str, default="once", choices=["once", "reload"]
@@ -396,7 +396,7 @@ if __name__ == "__main__":
 
     models = get_model_list(args.controller_url)
     oss_models = get_oss_models()
-    set_global_vars(args.controller_url, args.moderate, models, oss_models, args.python_path, args.nebulactl_path)
+    set_global_vars(args.controller_url, args.moderate, models, oss_models, args.python_path, args.XXXctl_path)
     refresh_models()
     logger.info(args)
     gr.close_all()

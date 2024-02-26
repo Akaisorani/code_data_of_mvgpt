@@ -140,7 +140,7 @@ async def receive_dingding(request: Param):
 
 @app.post("/nl2sql_chain")
 def nl2sql_chain(request: PromptGenEmb):
-    endpoint_url = "http://ai-models-provider.alimama.com/v1/chat/completions"
+    endpoint_url = "http://ai-models-provider.XXX.com/v1/chat/completions"
     auroraLLM = AuroraLLM(
         endpoint_url=endpoint_url,
         model_name="analyticai-13b-mama_sql_v620"

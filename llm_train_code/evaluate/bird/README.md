@@ -14,7 +14,7 @@
 [![Data Link](https://img.shields.io/badge/Download-BIRD-green.svg)]()
 [![Python 3.7+](https://img.shields.io/badge/Python-3.7+-teal.svg)](https://www.python.org/downloads/release/python-390/)
 [![Pytorch 1.8+](https://img.shields.io/badge/Pytorch-1.8+-red.svg)](https://pytorch.org/blog/pytorch-1.8-released/)
-[![Leaderboard 1.8+](https://img.shields.io/badge/Leaderboard-2023-pink.svg)](https://alibabaresearch.github.io/DAMO-ConvAI/bird/)
+[![Leaderboard 1.8+](https://img.shields.io/badge/Leaderboard-2023-pink.svg)](https://XXXresearch.github.io/DAMO-ConvAI/bird/)
 [![OpenAI 0.27+](https://img.shields.io/badge/OpenAI-0.27+-beige.svg)](https://www.python.org/downloads/release/python-390/)
 
 **License Notation**: BIRD-SQL is constructed and distributed for academic use instead of commercial use. For non-academic purpose of this data, please contact corresponding authors.

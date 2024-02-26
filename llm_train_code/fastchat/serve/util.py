@@ -15,7 +15,7 @@ def execute_dolphin_sql(sql):
     executeSqlParamMap = {'nodeId': 2629, 'cluster': 3, 'engine': 'hologres', 'sql': sql}
     params = {'param': executeSqlParamMap, 'authentication': authentication}
     print(params)
-    response = requests.post('http://aurora2.alibaba-inc.com' + '/auroraAPI/auroSql/executeNl2Sql',
+    response = requests.post('http://aurora2.XXX-inc.com' + '/auroraAPI/auroSql/executeNl2Sql',
                              data=json.dumps(params), headers=headers)
     # logger.info("execute dolphin sql cost " + str(time.time() - start_time))
     if response.status_code != 200:
@@ -32,7 +32,7 @@ def execute_dolphin_sql(sql):
     executeSqlParamMap = {'jobId': jobId, 'taskId': taskId}
     params = {'param': executeSqlParamMap, 'authentication': authentication}
     time.sleep(3)
-    response = requests.post('http://aurora2.alibaba-inc.com' + '/auroraAPI/auroSql/getResult', data=json.dumps(params),
+    response = requests.post('http://aurora2.XXX-inc.com' + '/auroraAPI/auroSql/getResult', data=json.dumps(params),
                              headers=headers)
     if response.status_code != 200:
         err_msg = "call dolphin error, status code is " + str(response.status_code)
@@ -63,7 +63,7 @@ def sendChatRecords(input, output, modelName, userId=None, tag=None):
         executeSqlParamMap['userId'] = userId
     params = {'param': executeSqlParamMap, 'authentication': authentication}
     print(params)
-    response = requests.post('http://pre2-aurora.alibaba-inc.com' + '/auroraAPI/ai-service/save-talk',
+    response = requests.post('http://pre2-aurora.XXX-inc.com' + '/auroraAPI/ai-service/save-talk',
                              data=json.dumps(params), headers=headers)
     # logger.info("execute dolphin sql cost " + str(time.time() - start_time))
     if response.status_code != 200:
@@ -81,7 +81,7 @@ def execute_dolphin_sql(sql):
     params = {"dbType": "dolphin", "sql": sql}
     headers = {"accessId": "6FMEl0doocC8C6IP", "accessKey": "29RAHzFyKne7Ei3Dg3eZCFeXufsvy25T"}
 
-    response = requests.post("http://report-jdbc-cn-zhangbei.dolphin.alimama.com/api/tasks/insight", params=params,headers=headers)
+    response = requests.post("http://report-jdbc-cn-zhangbei.dolphin.XXX.com/api/tasks/insight", params=params,headers=headers)
     print("execute dolphin sql cost " + str(time.time() - start_time))
     if response.status_code != 200:
         err_msg = "call dolphin error, status code is " + str(response.status_code)
@@ -102,7 +102,7 @@ def execute_ck_sql(sql):
     query = sql
 
     auth = ("default", "ck@401618")
-    url = f'https://ai.alimama.com'
+    url = f'https://ai.XXX.com'
     response = requests.post(url, data=query, auth=auth)
     sql_result = response.content.decode("utf8")
     print("execute ck sql cost:" + str(time.time() - start_time))
@@ -204,9 +204,9 @@ def getModelReturn(prompt):
 
 
 if __name__ == '__main__':
-    # print(execute_dolphin_sql("select thedate ,sum(alipay_cnt) from bp_dmp.rpt_amp_sap_item_action_stat_1d where cate_id  = 201683515 and toDate(toString(thedate)) > '20230201' group by thedate;"))
+    # print(execute_dolphin_sql("select thedate ,sum(alipay_cnt) from bp_XXX.rpt_amp_sap_item_action_stat_1d where cate_id  = 201683515 and toDate(toString(thedate)) > '20230201' group by thedate;"))
     # print(getModelReturn('analyticai-13b-mama_sql_v508_v4', 'who are you？'))
     # with open(r'/Users/zhengjianhui/PycharmProjects/mama-ai/help.txt', 'r') as out_file:
     #     message = out_file.read()
     #     print(message)
-    print(execute_ck_sql('select thedate,sum(alipay_amt) as alipay_amt from bp_dmp_rpt_amp_sap_item_action_stat_1d where  brand_id=20068  and toDate(toString(thedate)) >= date_sub(Month, 6, today()) group by thedate limit 2;'))
+    print(execute_ck_sql('select thedate,sum(alipay_amt) as alipay_amt from bp_XXX_rpt_amp_sap_item_action_stat_1d where  brand_id=20068  and toDate(toString(thedate)) >= date_sub(Month, 6, today()) group by thedate limit 2;'))

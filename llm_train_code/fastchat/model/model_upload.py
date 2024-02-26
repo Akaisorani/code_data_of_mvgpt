@@ -55,7 +55,7 @@ if __name__ == '__main__':
     oss_key = config.get('oss', 'oss_key')
     parser.add_argument("--id", type=str, default=oss_id)
     parser.add_argument("--key", type=str, default=oss_key)
-    parser.add_argument("--host", type=str, default="oss-accelerate.aliyuncs.com")
+    parser.add_argument("--host", type=str, default="oss-accelerate.XXXcs.com")
     parser.add_argument("--oss_path", type=str, default="oss://faeet2/ai_service/models/analyticai-7b-mama_sql_v424/")
     parser.add_argument("--model_path", type=str, default="/home/admin/mama-ai/models/analyticai-7b-mama_sql_v424/")
     parser.add_argument("--port", type=int, default="21009")

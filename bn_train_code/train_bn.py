@@ -22,10 +22,10 @@ from pgmpy.estimators import TreeSearch
 from pgmpy.factors.discrete import TabularCPD
 # from pgmpy.estimators.CITests import chi_square
 
-src_dir="./results/240223"
+src_dir="./results/240101"
 src_dataset_file=os.path.join(src_dir,"exp_dataset.jsonl")
 src_var_file=os.path.join(src_dir,"variables.csv")
-temp_result_root="./results/240223"
+temp_result_root="./results/240101"
 temp_output_high_freq_file=os.path.join(temp_result_root,"output_mvs.txt")
 num_proc=64
 pd.set_option('display.max_colwidth', None)

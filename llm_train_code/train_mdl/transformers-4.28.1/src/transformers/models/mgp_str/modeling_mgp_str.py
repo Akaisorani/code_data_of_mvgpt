@@ -1,5 +1,5 @@
 # coding=utf-8
-# Copyright 2023 Alibaba Research and The HuggingFace Inc. team. All rights reserved.
+# Copyright 2023 XXX Research and The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,10 +42,10 @@ _CONFIG_FOR_DOC = "MgpstrConfig"
 _TOKENIZER_FOR_DOC = "MgpstrTokenizer"
 
 # Base docstring
-_CHECKPOINT_FOR_DOC = "alibaba-damo/mgp-str-base"
+_CHECKPOINT_FOR_DOC = "XXX-damo/mgp-str-base"
 
 MGP_STR_PRETRAINED_MODEL_ARCHIVE_LIST = [
-    "alibaba-damo/mgp-str-base",
+    "XXX-damo/mgp-str-base",
     # See all MGP-STR models at https://huggingface.co/models?filter=mgp-str
 ]
 
@@ -464,10 +464,10 @@ class MgpstrForSceneTextRecognition(MgpstrPreTrainedModel):
         >>> url = "https://i.postimg.cc/ZKwLg2Gw/367-14.png"
         >>> image = Image.open(requests.get(url, stream=True).raw).convert("RGB")
 
-        >>> processor = MgpstrProcessor.from_pretrained("alibaba-damo/mgp-str-base")
+        >>> processor = MgpstrProcessor.from_pretrained("XXX-damo/mgp-str-base")
         >>> pixel_values = processor(images=image, return_tensors="pt").pixel_values
 
-        >>> model = MgpstrForSceneTextRecognition.from_pretrained("alibaba-damo/mgp-str-base")
+        >>> model = MgpstrForSceneTextRecognition.from_pretrained("XXX-damo/mgp-str-base")
 
         >>> # inference
         >>> outputs = model(pixel_values)

@@ -21,7 +21,7 @@ from ...utils import logging
 logger = logging.get_logger(__name__)
 
 MGP_STR_PRETRAINED_CONFIG_ARCHIVE_MAP = {
-    "alibaba-damo/mgp-str-base": "https://huggingface.co/alibaba-damo/mgp-str-base/resolve/main/config.json",
+    "XXX-damo/mgp-str-base": "https://huggingface.co/XXX-damo/mgp-str-base/resolve/main/config.json",
 }
 
 
@@ -30,7 +30,7 @@ class MgpstrConfig(PretrainedConfig):
     This is the configuration class to store the configuration of an [`MgpstrModel`]. It is used to instantiate an
     MGP-STR model according to the specified arguments, defining the model architecture. Instantiating a configuration
     with the defaults will yield a similar configuration to that of the MGP-STR
-    [alibaba-damo/mgp-str-base](https://huggingface.co/alibaba-damo/mgp-str-base) architecture.
+    [XXX-damo/mgp-str-base](https://huggingface.co/XXX-damo/mgp-str-base) architecture.
 
     Configuration objects inherit from [`PretrainedConfig`] and can be used to control the model outputs. Read the
     documentation from [`PretrainedConfig`] for more information.

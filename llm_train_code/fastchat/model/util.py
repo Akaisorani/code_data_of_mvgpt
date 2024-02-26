@@ -16,7 +16,7 @@ class OSS:
         oss_id = config.get('oss', 'oss_id')
         oss_key = config.get('oss', 'oss_key')
         auth = oss2.Auth(oss_id, oss_key)
-        cls.bucket = oss2.Bucket(auth, 'oss-accelerate.aliyuncs.com', 'faeet2')
+        cls.bucket = oss2.Bucket(auth, 'oss-accelerate.XXXcs.com', 'faeet2')
 
     @classmethod
     def upload(cls, local_path, oss_path):

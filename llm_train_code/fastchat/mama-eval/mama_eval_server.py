@@ -118,7 +118,7 @@ templates = Jinja2Templates(directory="templates")
 class Variables:
     def __init__(self):
         self.log_in_time = -1
-        self.env = 'https://pre2-aurora.alibaba-inc.com'
+        self.env = 'https://pre2-aurora.XXX-inc.com'
         self.redis_client = None
         self.config_path = os.path.dirname(os.path.abspath(__file__)) + '/config/redis_config.ini'
         self.redis_prefix = "eval:"
@@ -619,7 +619,7 @@ async def get_log_detail(log: Log):
 
 @app.get("/models")
 def get_model_list():
-    url = 'http://models-controller.alimama.com'
+    url = 'http://models-controller.XXX.com'
     if global_variables.global_args.env == 'prod':
         url = url + ':21001'
     controller_url = url
@@ -783,7 +783,7 @@ def doModelRequest(request_dict: Dict):
     prompt = request_dict.get("prompt")
     params['messages'] = [{'role': 'user', 'content': prompt}]
     logger.info("models request " + str(params))
-    url = 'http://ai-models-provider.alimama.com'
+    url = 'http://ai-models-provider.XXX.com'
     if  global_variables.global_args.env == "prod":
         url = url + ":8100"
     res = requests.post(url + "/v1/chat/completions", data=json.dumps(params, ensure_ascii=False).encode("utf8"))
@@ -869,9 +869,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     global_variables.global_args = args
     if args.env == 'pre':
-        global_variables.global_url_base = 'https://pre2-aurora.alibaba-inc.com'
+        global_variables.global_url_base = 'https://pre2-aurora.XXX-inc.com'
     elif args.env == 'dev':
-        global_variables.global_url_base = 'https://pre2-aurora.alibaba-inc.com'
+        global_variables.global_url_base = 'https://pre2-aurora.XXX-inc.com'
     else:
-        global_variables.global_url_base = 'https://aurora2.alibaba-inc.com'
+        global_variables.global_url_base = 'https://aurora2.XXX-inc.com'
     uvicorn.run(app, host=args.host, port=args.port)

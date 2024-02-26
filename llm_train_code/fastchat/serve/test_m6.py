@@ -60,10 +60,10 @@ import json
 import requests
 import time
 
-worker_addr = 'http://mama-m6.alimama.com/worker_generate_stream'
+worker_addr = 'http://mama-m6.XXX.com/worker_generate_stream'
 headers = {'Content-Type': 'application/json'}
-pload = { "model": "nebula_m6", "prompt": "请根据工具描述与用户输入来确定是否需要调用工具，若需要调用工具且用户输入了合理的参数请以Tool开头输出一段JSON格式的包含特定工具id与对应参数的工具信息，否则请以Assistant开头输出正常回答，或以ToolParam开头引导用户描述参数。\n工具描述: diagnosis，参数为单元id-adgroup_id与日期-date，可诊断展现、点击相关投放效果问题；kr，参数为单元id-adgroup_id，可进行关键词推荐。\n\nHuman: 为什么我的计划到5月4号一直没有展现，单元ID：4069595657\n\n", "temperature": 0.7, "max_new_tokens": 512, "stop": "</s>" }
-pload = { "model": "nebula_m6", "prompt": "请根据工具描述与用户输入来确定是否需要调用工具，若需要调用工具且用户输入了合理的参数请以Tool开头输出一段JSON格式的包含特定工具id与对应参数的工具信息，否则请以Assistant开头输出正常回答，或以ToolParam开头引导用户描述参数。\n工具描述: diagnosis，参数为单元id-adgroup_id与日期-date，可诊断展现、点击相关投放效果问题；kr，参数为单元id-adgroup_id，可进行关键词推荐。\n\n Human: 为什么我的计划到5月4号一直没有展现，单元ID：4069595657\n\n", "temperature": 0.7, "max_new_tokens": 512, "stop": "</s>" }
+pload = { "model": "XXX_m6", "prompt": "请根据工具描述与用户输入来确定是否需要调用工具，若需要调用工具且用户输入了合理的参数请以Tool开头输出一段JSON格式的包含特定工具id与对应参数的工具信息，否则请以Assistant开头输出正常回答，或以ToolParam开头引导用户描述参数。\n工具描述: diagnosis，参数为单元id-adgroup_id与日期-date，可诊断展现、点击相关投放效果问题；kr，参数为单元id-adgroup_id，可进行关键词推荐。\n\nHuman: 为什么我的计划到5月4号一直没有展现，单元ID：4069595657\n\n", "temperature": 0.7, "max_new_tokens": 512, "stop": "</s>" }
+pload = { "model": "XXX_m6", "prompt": "请根据工具描述与用户输入来确定是否需要调用工具，若需要调用工具且用户输入了合理的参数请以Tool开头输出一段JSON格式的包含特定工具id与对应参数的工具信息，否则请以Assistant开头输出正常回答，或以ToolParam开头引导用户描述参数。\n工具描述: diagnosis，参数为单元id-adgroup_id与日期-date，可诊断展现、点击相关投放效果问题；kr，参数为单元id-adgroup_id，可进行关键词推荐。\n\n Human: 为什么我的计划到5月4号一直没有展现，单元ID：4069595657\n\n", "temperature": 0.7, "max_new_tokens": 512, "stop": "</s>" }
 
 response = requests.post(
 worker_addr,

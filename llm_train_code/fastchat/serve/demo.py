@@ -100,12 +100,12 @@ def load_demo_single(url_params):
 
 notice_markdown = """
 # 🏔️ MarketingGLM
-## 由于数据安全原因，体验请使用[极光平台](http://aurora.alibaba-inc.com/)
+## 由于数据安全原因，体验请使用[XXX平台](http://aurora.XXX-inc.com/)
 
 """
 
 learn_more_markdown = """
-最终解释权归Alimama所有
+最终解释权归XXX所有
 """
 
 block_css = (
@@ -150,7 +150,7 @@ def build_demo():
     return demo
 
 
-# share=False must be set to meet the data security policy of Alibaba
+# share=False must be set to meet the data security policy of XXX
 if __name__ == "__main__":
     gr.close_all()
     parser = argparse.ArgumentParser()

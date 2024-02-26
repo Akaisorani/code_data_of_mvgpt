@@ -37,15 +37,15 @@ else
 fi
 if [ ! -n "$6" ]; then
   # queue_name='kgb_llm'
-  # queue_name='alimama_dolphin_llm'
+  # queue_name='XXX_dolphin_llm'
   queue_name='mdl_a100_test_na61'
 else
   queue_name=$6
 fi
 if [ ! -n "$7" ]; then
-  nebulactl_path='nebulactl'
+  XXXctl_path='XXXctl'
 else
-  nebulactl_path=$7
+  XXXctl_path=$7
 fi
 
  args="-Dmodel_path=/data/oss_bucket_0/ai_service/models/$model_name \
@@ -56,8 +56,8 @@ fi
 #  -Dquestion_begin=0 \
 #  -Dquestion_end=32"
 echo "${args}"
-echo "$nebulactl_path"
-$nebulactl_path run mdl --queue=$queue_name \
+echo "$XXXctl_path"
+$XXXctl_path run mdl --queue=$queue_name \
                   --entry=get_model_answer.py \
                   --algo_name=pytorch1131 \
                   --worker_count=$num_gpus \
@@ -67,5 +67,5 @@ $nebulactl_path run mdl --queue=$queue_name \
                   --oss_access_id=$oss_access_id \
                   --oss_access_key=$oss_access_key \
                   --oss_bucket=faeet2 \
-                  --oss_endpoint=oss-accelerate.aliyuncs.com \
+                  --oss_endpoint=oss-accelerate.XXXcs.com \
                   --job_name="evaluate_$model_name"

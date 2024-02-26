@@ -31,9 +31,9 @@ else
   queue_name=$4
 fi
 if [ ! -n "$5" ]; then
-  nebulactl_path='nebulactl'
+  XXXctl_path='XXXctl'
 else
-  nebulactl_path=$5
+  XXXctl_path=$5
 fi
 
  args="-Dmodel_name_or_path=/data/oss_bucket_0/ai_service/models/$base_model \
@@ -60,8 +60,8 @@ fi
  -Dgradient_checkpointing=True  \
  -Dlazy_preprocess=True"
 echo "${args}"
-echo "$nebulactl_path"
-$nebulactl_path run mdl --queue=$queue_name \
+echo "$XXXctl_path"
+$XXXctl_path run mdl --queue=$queue_name \
                   --entry=train_vicuna.py \
                   --algo_name=pytorch1131 \
                   --worker_count=1 \
@@ -71,5 +71,5 @@ $nebulactl_path run mdl --queue=$queue_name \
                   --oss_access_id=$oss_access_id \
                   --oss_access_key=$oss_access_key \
                   --oss_bucket=faeet2 \
-                  --oss_endpoint=oss-accelerate.aliyuncs.com \
+                  --oss_endpoint=oss-accelerate.XXXcs.com \
                   --job_name=$out_modle_name

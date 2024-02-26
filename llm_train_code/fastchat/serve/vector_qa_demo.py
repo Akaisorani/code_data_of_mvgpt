@@ -6,7 +6,7 @@ import requests
 
 if __name__ == '__main__':
     content = 'hello'
-    url = "https://ai-models-provider.alimama.com/v1/chat/completions"
+    url = "https://ai-models-provider.XXX.com/v1/chat/completions"
 
     payload = {
         "model": "chatglm_6B",

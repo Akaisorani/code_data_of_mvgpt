@@ -19,8 +19,8 @@ df.columns=['timestamp', 'member_id', 'shop_category_id', 'shop_category', 'exp'
 df = df.dropna(axis=0, how='any')
 # euclidean_distance 向量 这种也删除
 df=df[df['exp'].str.contains('euclidean_distance')==False]
-# crowd_materialize_view_for_dmp.crowd_id 这种也删除
-# df=df[df['exp'].str.contains('crowd_materialize_view_for_dmp.crowd_id')==False]
+# crowd_materialize_view_for_XXX.crowd_id 这种也删除
+# df=df[df['exp'].str.contains('crowd_materialize_view_for_XXX.crowd_id')==False]
 
 # 按时间排序
 df.sort_values(by='timestamp', inplace=True)

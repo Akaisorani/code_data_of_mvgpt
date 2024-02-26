@@ -66,7 +66,7 @@ class ModelWorker:
     ):
         self.controller_addr = controller_addr
         self.worker_addr = worker_addr
-        self.model_name = "nebula_m6"
+        self.model_name = "XXX_m6"
 
         logger.info(f"Loading the model {self.model_name} on worker {worker_id} ...")
 
@@ -339,12 +339,12 @@ if __name__ == "__main__":
     parser.add_argument("--port", type=int, default=21002)
     parser.add_argument("--worker-address", type=str, default="http://127.0.0.1:21002")
     parser.add_argument(
-        "--controller-address", type=str, default="http://models-controller.alimama.com"
+        "--controller-address", type=str, default="http://models-controller.XXX.com"
     )
     parser.add_argument(
         "--model-path",
         type=str,
-        default="/home/admin/nebula_m6",
+        default="/home/admin/XXX_m6",
         help="The path to the weights",
     )
     parser.add_argument("--no-register", action="store_true")

@@ -28,7 +28,7 @@ alt="drawing" width="600"/>
 Tips:
 
 - MGP-STR is trained on two synthetic datasets [MJSynth]((http://www.robots.ox.ac.uk/~vgg/data/text/)) (MJ) and SynthText(http://www.robots.ox.ac.uk/~vgg/data/scenetext/) (ST) without fine-tuning on other datasets. It achieves state-of-the-art results on six standard Latin scene text benchmarks, including 3 regular text datasets (IC13, SVT, IIIT) and 3 irregular ones (IC15, SVTP, CUTE).
-- This model was contributed by [yuekun](https://huggingface.co/yuekun). The original code can be found [here](https://github.com/AlibabaResearch/AdvancedLiterateMachinery/tree/main/OCR/MGP-STR).
+- This model was contributed by [yuekun](https://huggingface.co/yuekun). The original code can be found [here](https://github.com/XXXResearch/AdvancedLiterateMachinery/tree/main/OCR/MGP-STR).
 
 ## Inference
 
@@ -47,8 +47,8 @@ into a single instance to both extract the input features and decode the predict
 >>> import requests
 >>> from PIL import Image
 
->>> processor = MgpstrProcessor.from_pretrained('alibaba-damo/mgp-str-base')
->>> model = MgpstrForSceneTextRecognition.from_pretrained('alibaba-damo/mgp-str-base')
+>>> processor = MgpstrProcessor.from_pretrained('XXX-damo/mgp-str-base')
+>>> model = MgpstrForSceneTextRecognition.from_pretrained('XXX-damo/mgp-str-base')
 
 >>> # load image from the IIIT-5k dataset
 >>> url = "https://i.postimg.cc/ZKwLg2Gw/367-14.png"

@@ -7,7 +7,7 @@
 import random
 import string
 
-table_meta = {"table_name": "taobao_dmp_dp_view_rpt_shop_behavior_di", "table_desc": "存储了用户在店铺维度下的行为数据",
+table_meta = {"table_name": "taobao_XXX_dp_view_rpt_shop_behavior_di", "table_desc": "存储了用户在店铺维度下的行为数据",
               "column": [{"header_id": "${group_dim_en_name}", "header_name": "${group_dim_cn_name}", "header_type": "${random_type}","data_type": "dimension", "header_unit": ""},
                          {"header_id": "${shop_id_column}", "header_name": "${subject_name}", "header_type": "${random_type}","data_type": "dimension", "header_unit": ""},
                          {"header_id": "pv_cnt", "header_name": "浏览次数", "header_type": "bigint","data_type": "metric", "header_unit": ""},

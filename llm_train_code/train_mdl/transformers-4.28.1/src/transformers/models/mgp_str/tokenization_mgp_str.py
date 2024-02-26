@@ -28,7 +28,7 @@ VOCAB_FILES_NAMES = {"vocab_file": "vocab.json"}
 
 PRETRAINED_VOCAB_FILES_MAP = {
     "vocab_file": {
-        "mgp-str": "https://huggingface.co/alibaba-damo/mgp-str-base/blob/main/vocab.json",
+        "mgp-str": "https://huggingface.co/XXX-damo/mgp-str-base/blob/main/vocab.json",
     }
 }
 

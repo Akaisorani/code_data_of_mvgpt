@@ -244,7 +244,7 @@ def prepare_img():
 class MgpstrModelIntegrationTest(unittest.TestCase):
     @slow
     def test_inference(self):
-        model_name = "alibaba-damo/mgp-str-base"
+        model_name = "XXX-damo/mgp-str-base"
         model = MgpstrForSceneTextRecognition.from_pretrained(model_name).to(torch_device)
         processor = MgpstrProcessor.from_pretrained(model_name)
 

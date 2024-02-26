@@ -9,7 +9,7 @@ def generate_table_schema_json(project_name,table_name, out_json_name):
     access_id = open("odps.conf", "r").read().split("\n")[0].strip()
     access_key = open("odps.conf", "r").read().split("\n")[1].strip()
     #project_name = 'ad_tbk_dw'
-    end_point = 'http://service-corp.odps.aliyun-inc.com/api'
+    end_point = 'http://service-corp.odps.XXX-inc.com/api'
     odps = ODPS(access_id=access_id, secret_access_key=access_key, project=project_name, endpoint=end_point)
 
     # 获取表信息

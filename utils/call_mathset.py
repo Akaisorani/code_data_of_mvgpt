@@ -12,7 +12,7 @@ from jpype.types import *
 
 # import java.lang
 
-# from com.alimama.ad.ltp.fusion.engine.ast.expression import Expression
+# from com.XXX.ad.ltp.fusion.engine.ast.expression import Expression
 
 def query_by_jpype():
     # if not jpype.isJVMStarted():

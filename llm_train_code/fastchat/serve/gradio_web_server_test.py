@@ -151,7 +151,7 @@ def downvote_last_response(state, model_selector, request: gr.Request):
     vote_last_response(state, "downvote", model_selector, request)
     if 'chatglm' in model_selector:
         query = state.messages[-2][1]
-        new_id_list, my_dict = get_prompt_knowledge_top_k(query, 'alimama_kgb_cmop_p4p_cmop_n_nopass_knowledges_embedding_knlg_data', 5)
+        new_id_list, my_dict = get_prompt_knowledge_top_k(query, 'XXX_kgb_cmop_p4p_cmop_n_nopass_knowledges_embedding_knlg_data', 5)
         response = "\n亲，对不起我的回答有问题，以下是从知识库中的相似的5个回答，请参考：\n"
         index = 1
         for id in new_id_list:
@@ -368,11 +368,11 @@ def http_bot(state, model_selector, temperature, max_new_tokens, request: gr.Req
 
 notice_markdown = """
 # 🏔️ MarketingGLM
-## 欢迎到使用极光平台体验最新营销智能助手 [极光平台](http://aurora.alibaba-inc.com)  [使用手册](https://aliyuque.antfin.com/mocqv8/kg7h1z/dhsw9g4r6zif652f?singleDoc#)
+## 欢迎到使用XXX平台体验最新营销智能助手 [XXX平台](http://aurora.XXX-inc.com)  [使用手册](https://XXX.XXX.com/mocqv8/kg7h1z/dhsw9g4r6zif652f?singleDoc#)
 """
 
 learn_more_markdown = """
-Alimama
+XXX
 """
 
 block_css = (
@@ -532,7 +532,7 @@ def build_demo():
     return demo
 
 
-# share=False must be set to meet the data security policy of Alibaba
+# share=False must be set to meet the data security policy of XXX
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", type=str, default="0.0.0.0")

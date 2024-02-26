@@ -67,8 +67,8 @@ exp_dataset=exp_dataset.map(edit_exp, num_proc=num_proc)
 print(exp_dataset[:3])
 
 
-# extract exp identifiers pattern: new_dmp.balabala.balabala
-pattern=re.compile(r'new_dmp\.[.|\w]+')
+# extract exp identifiers pattern: new_XXX.balabala.balabala
+pattern=re.compile(r'new_XXX\.[.|\w]+')
 def extract_identifiers(exp):
     identifiers_lis=pattern.findall(exp)
     identifiers_lis=list(set(identifiers_lis))

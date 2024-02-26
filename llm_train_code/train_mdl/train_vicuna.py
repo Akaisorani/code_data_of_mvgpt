@@ -221,7 +221,7 @@ def train():
     )
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
-    #add code to fix nebula traning system
+    #add code to fix XXX traning system
     # training_args.local_rank = int(os.environ['RANK'])
     # torch.distributed.init_process_group(backend='nccl')
     # print("training_args.local_rank="+str(training_args.local_rank))

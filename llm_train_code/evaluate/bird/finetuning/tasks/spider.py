@@ -42,7 +42,7 @@ _HOMEPAGE = "https://yale-lily.github.io/spider"
 _LICENSE = "CC BY-SA 4.0"
 
 
-# _URL = "http://sstosql.oss-cn-hangzhou-zmf.aliyuncs.com/spider/spider.zip"
+# _URL = "http://sstosql.oss-cn-hangzhou-zmf.XXXcs.com/spider/spider.zip"
 
 
 class Spider(datasets.GeneratorBasedBuilder):

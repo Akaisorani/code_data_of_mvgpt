@@ -60,7 +60,7 @@ controller_url = None
 enable_moderation = False
 models = []
 default_aurora_client = AuroraClient()
-global_url_base = 'https://pre2-aurora.alibaba-inc.com'
+global_url_base = 'https://pre2-aurora.XXX-inc.com'
 default_headers = {
     'Connection': 'keep-alive',
     'Accept': '*/*',
@@ -346,7 +346,7 @@ def http_bot(state, model_selector, temperature, max_new_tokens, scence_selector
     try:
         if(scence_selector == '知识库问答'):
             query = state.messages[-2][1]
-            question, answer = get_prompt_knowledge(query, 'alimama_kgb_cmop_p4p_cmop_n_nopass_knowledges_embedding_knlg_data')
+            question, answer = get_prompt_knowledge(query, 'XXX_kgb_cmop_p4p_cmop_n_nopass_knowledges_embedding_knlg_data')
             prompt_template = PromptTemplate(
                 template=conv_qa_prompt_template,
                 input_variables=["context_question", "context_answer", "question"]
@@ -544,7 +544,7 @@ notice_markdown = """
 """
 
 learn_more_markdown = """
-Alimama
+XXX
 """
 
 block_css = (
@@ -719,7 +719,7 @@ def build_demo():
     return demo
 
 
-# share=False must be set to meet the data security policy of Alibaba
+# share=False must be set to meet the data security policy of XXX
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--host", type=str, default="0.0.0.0")

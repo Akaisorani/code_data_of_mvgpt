@@ -59,12 +59,12 @@
     },
     {
         "header_id": "xcat1_id",
-        "header_name": "天猫类目id",
+        "header_name": "XXX类目id",
         "header_type": "BIGINT"
     },
     {
         "header_id": "xcat1_name",
-        "header_name": "天猫类目名称",
+        "header_name": "XXX类目名称",
         "header_type": "STRING"
     },
     {
@@ -104,7 +104,7 @@
     },
     {
         "header_id": "is_xcat1_old",
-        "header_name": "是否天猫行业老客",
+        "header_name": "是否XXX行业老客",
         "header_type": "STRING"
     },
     {

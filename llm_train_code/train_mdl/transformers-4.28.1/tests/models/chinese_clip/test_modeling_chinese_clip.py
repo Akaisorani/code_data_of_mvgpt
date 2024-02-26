@@ -664,7 +664,7 @@ class ChineseCLIPModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestC
 
 # We will verify our results on an image of Pikachu
 def prepare_img():
-    url = "https://clip-cn-beijing.oss-cn-beijing.aliyuncs.com/pokemon.jpeg"
+    url = "https://clip-cn-beijing.oss-cn-beijing.XXXcs.com/pokemon.jpeg"
     im = Image.open(requests.get(url, stream=True).raw)
     return im
 
