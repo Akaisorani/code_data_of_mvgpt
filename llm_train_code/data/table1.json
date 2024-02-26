@@ -213,22 +213,22 @@
             "header_type": "DOUBLE"
         },
         {
-            "header_id": "click_alipay_dir_num",
-            "header_name": "点击ALIPAY直接成交笔数",
+            "header_id": "click_XXX_dir_num",
+            "header_name": "点击XXX直接成交笔数",
             "header_type": "BIGINT"
         },
         {
-            "header_id": "click_alipay_dir_amt",
-            "header_name": "点击ALIPAY直接成交金额(元)",
+            "header_id": "click_XXX_dir_amt",
+            "header_name": "点击XXX直接成交金额(元)",
             "header_type": "DOUBLE"
         },
         {
-            "header_id": "click_alipay_inshop_num",
+            "header_id": "click_XXX_inshop_num",
             "header_name": "点击成交笔数",
             "header_type": "BIGINT"
         },
         {
-            "header_id": "click_alipay_inshop_amt",
+            "header_id": "click_XXX_inshop_amt",
             "header_name": "点击成交金额",
             "header_type": "DOUBLE"
         },
@@ -278,13 +278,13 @@
             "header_type": "BIGINT"
         },
         {
-            "header_id": "show_alipay_inshop_num",
-            "header_name": "展现alipay店内成交笔数",
+            "header_id": "show_XXX_inshop_num",
+            "header_name": "展现XXX店内成交笔数",
             "header_type": "BIGINT"
         },
         {
-            "header_id": "show_alipay_inshop_amt",
-            "header_name": "展现alipay店内成交金额(元)",
+            "header_id": "show_XXX_inshop_amt",
+            "header_name": "展现XXX店内成交金额(元)",
             "header_type": "DOUBLE"
         },
         {
@@ -318,8 +318,8 @@
             "header_type": "BIGINT"
         },
         {
-            "header_id": "ad_click_alipay_inshop_num",
-            "header_name": "广告ALIPAY店内成交笔数",
+            "header_id": "ad_click_XXX_inshop_num",
+            "header_name": "广告XXX店内成交笔数",
             "header_type": "BIGINT"
         },
         {

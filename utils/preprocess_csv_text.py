@@ -19,7 +19,7 @@ sql_dataset=load_dataset("csv", data_files=src_file, sep="#")
 # print(sql_dataset)
 
 
-sql_dataset["train"]=sql_dataset["train"].map(lambda x: {'exp': x['exp'].replace('\t',' ').replace('new_XXX','nd').replace('taobao_XXX_dp','tdd')})
+sql_dataset["train"]=sql_dataset["train"].map(lambda x: {'exp': x['exp'].replace('\t',' ').replace('new_XXX','nd').replace('XXX_XXX_dp','tdd')})
 sql_dataset["train"]=sql_dataset["train"].filter(lambda x: len(x['exp'])<=1000)
 # sql_dataset["train"]=sql_dataset["train"].filter(lambda x: 'euclidean_distance' not in x['exp'])
 

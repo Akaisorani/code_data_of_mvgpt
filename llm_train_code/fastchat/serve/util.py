@@ -204,9 +204,9 @@ def getModelReturn(prompt):
 
 
 if __name__ == '__main__':
-    # print(execute_dolphin_sql("select thedate ,sum(alipay_cnt) from bp_XXX.rpt_amp_sap_item_action_stat_1d where cate_id  = 201683515 and toDate(toString(thedate)) > '20230201' group by thedate;"))
+    # print(execute_dolphin_sql("select thedate ,sum(XXX_cnt) from bp_XXX.rpt_amp_sap_item_action_stat_1d where cate_id  = 201683515 and toDate(toString(thedate)) > '20230201' group by thedate;"))
     # print(getModelReturn('analyticai-13b-mama_sql_v508_v4', 'who are you？'))
     # with open(r'/Users/zhengjianhui/PycharmProjects/mama-ai/help.txt', 'r') as out_file:
     #     message = out_file.read()
     #     print(message)
-    print(execute_ck_sql('select thedate,sum(alipay_amt) as alipay_amt from bp_XXX_rpt_amp_sap_item_action_stat_1d where  brand_id=20068  and toDate(toString(thedate)) >= date_sub(Month, 6, today()) group by thedate limit 2;'))
+    print(execute_ck_sql('select thedate,sum(XXX_amt) as XXX_amt from bp_XXX_rpt_amp_sap_item_action_stat_1d where  brand_id=20068  and toDate(toString(thedate)) >= date_sub(Month, 6, today()) group by thedate limit 2;'))
