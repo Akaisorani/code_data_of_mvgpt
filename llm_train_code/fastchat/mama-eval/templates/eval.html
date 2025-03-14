@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nlp2sql评测系统</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>nlp2sql评测系统</h1>
+    <hr>
+    <div class="row">
+
+        <div class="col-md-4">
+            <!--            <div class="form-group">-->
+            <!--                &lt;!&ndash;                style="display:none"&ndash;&gt;-->
+            <!--                <label for="hidden_id">ID:</label>-->
+            <!--                <textarea class="form-control" name="hidden_id" id="hidden_id" disabled></textarea>-->
+            <!--            </div>-->
+            <!--            <div class="form-group">-->
+            <!--                <label for="prompt">Prompt:</label>-->
+            <!--                <textarea class="form-control" name="prompt" id="prompt"></textarea>-->
+            <!--            </div>-->
+
+            <!--            <div class="form-group">-->
+            <!--                <label for="expected">Expected Answer:</label>-->
+            <!--                <textarea class="form-control" name="expected" id="expected"></textarea>-->
+            <!--            </div>-->
+
+            <!--            <div class="form-group">-->
+            <!--                <label for="answer">model Answer:</label>-->
+            <!--                <textarea class="form-control" name="answer" id="answer"></textarea>-->
+            <!--            </div>-->
+
+            <!--            <div class="form-group">-->
+            <!--                <label for="result">result:</label>-->
+            <!--                <textarea class="form-control" name="result" id="result" disabled></textarea>-->
+            <!--            </div>-->
+             <h3>[状态日志]</h3>
+            <div class="form-group">
+                <label for="compareState">数据对比统计:</label>
+                <textarea class="form-control" name="compareState" id="compareState" disabled></textarea>
+            </div>
+
+            <div class="form-group" style="display: none">
+                <label for="pagesize">pagesize:</label>
+                <textarea class="form-control" name="pagesize" id="pagesize">10</textarea>
+            </div>
+
+            <!--            <div class="form-group">-->
+            <!--                <label for="response">Response:</label>-->
+            <!--                <textarea class="form-control" name="response" id="response"></textarea>-->
+            <!--            </div>-->
+
+            <!--            <button type="button" class="btn btn-primary" id="save-btn">Save</button>-->
+            <!--            <button type="button" class="btn btn-danger" id="delete-btn">删除记录</button>-->
+            <!--            <button type="button" class="btn btn-success" id="update-btn">更新记录</button>-->
+            <h3>[评测日志]</h3>
+            <div>
+                <label for="log_record">日志ID:</label>
+                <select id="log_record" class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="logtail">评测运行日志:</label>
+                <textarea class="form-control" name="logtail" id="logtail"></textarea>
+            </div>
+            <button type="button" class="btn btn-success" id="log-btn">查看日志</button>
+<!--            <button type="button" class="btn btn-danger" id="run-btn">重新比对标签测试集</button>-->
+            <div class="container" class="col-md-6">
+            </div>
+            <div>
+                <h3>[文件上传解析]</h3>
+                <p>请先选择合适的场景和模型,之后再进行文件上传</p>
+                <div class="form-group">
+                    <label for="select">场景Tag:</label>
+                    <select class="form-control" id="global_select">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-danger" id="run-btn">重新比对标签测试集</button>
+                </div>
+                <div class="form-group">
+                    <label for="model_select">模型Models:</label>
+                    <select class="form-control" id="global_model_select">
+                    </select>
+                </div>
+                <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">选择文件：</label>
+                        <input type="file" id="file" name="file" class="form-control" required>
+                    </div>
+                    <!--                <button type="button" class="btn btn-primary" id="set-tag-btn">设置标签</button>-->
+                    <!--                <button type="button" class="btn btn-primary" id="set-model-btn">设置模型名称</button>-->
+                    <button type="submit" class="btn btn-primary" id="upload-btn">上传</button>
+
+                </form>
+                <div id="display"></div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <h3>历史测试数据</h3>
+            <div class="form-group">
+                <label for="searchInput">搜索Search:</label>
+                <input type="text" id="searchInput" class="form-control" placeholder="Enter search keyword...">
+            </div>
+            <div class="form-group">
+                <select id="selectpageSize" class="form-control">
+                    <option value="10">10条/页</option>
+                    <option value="50">50条/页</option>
+                    <option value="100">100条/页</option>
+                </select>
+            </div>
+            <table class="table" id="myTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th style="display:none">prompt</th>
+                    <th>answer</th>
+                    <th style="display:none">result</th>
+                    <th style="display:none">expected</th>
+                    <th style="display:none">tag</th>
+                    <th style="display:none">model</th>
+                </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                </ul>
+
+            </nav>
+
+        </div>
+    </div>
+
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">模态框标题</h4>
+                </div>
+                <div class="modal-body">
+                    模态框内容
+                    <br><br>
+                    <span id="countdown"></span>
+                </div>
+                <!--                <div class="modal-footer">-->
+                <!--                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+                <!--                    <button type="button" class="btn btn-primary">保存</button>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="detailModalTitle">详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="select">场景Tag:</label>
+                        <select class="form-control" id="select">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="model_select">模型Models:</label>
+                        <select class="form-control" id="model_select">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!--                style="display:none"-->
+                        <label for="hidden_id">ID:</label>
+                        <textarea class="form-control" name="hidden_id" id="hidden_id" disabled></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <textarea class="form-control" name="title" id="title"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="prompt">Prompt:</label>
+                        <textarea class="form-control" name="prompt" id="prompt"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expected">Expected Answer:</label>
+                        <textarea class="form-control" name="expected" id="expected"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="answer">model Answer:</label>
+                        <textarea class="form-control" name="answer" id="answer"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="result">result:</label>
+                        <textarea class="form-control" name="result" id="result" disabled></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="modal-delete-btn">删除记录</button>
+                    <button type="button" class="btn btn-success" id="modal-update-btn">更新记录</button>
+                    <button type="button" class="btn btn-primary" id="modal-save-btn">添加记录</button>
+                    <button type="button" class="btn btn-light" id="modal-run-btn">运行评估</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .td {
+        min-width: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 20px;
+    }
+
+    .td2 {
+        min-width: 25px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 30px;
+    }
+
+    .td3 {
+        min-width: 300px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 300px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        // 获取tag 信息
+        $.ajax({
+            type: 'GET',
+            url: '/models',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                if (data.flag) {
+                    var options = data.data;
+                    $.each(options, function (index, value) {
+                        $('#model_select').append($('<option>').text(value));
+                        $('#global_model_select').append($('<option>').text(value));
+                    });
+                }
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+        // 获取tag 信息
+        $.ajax({
+            type: 'GET',
+            url: '/tags',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                if (data.flag) {
+                    var options = data.data;
+                    $.each(options, function (index, value) {
+                        $('#select').append($('<option>').text(value));
+                        $('#global_select').append($('<option>').text(value));
+                    });
+                }
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+
+        // 获取tag 信息
+        loadLogIds();
+        setDefaultTagAndModel();
+        loadTable();
+
+        $("#save-btn").click(function () {
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var tag = $("#select").val();
+            $.ajax({
+                type: 'POST',
+                url: '/api/save',
+                data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    loadTable();
+                    showModel("", "Data save successfully")
+                },
+                error: function () {
+                    showModel("", "Data save failed")
+                }
+            });
+        });
+        $("#detailModal").on("click", ".btn-danger", function () {
+            var id = $("#hidden_id").val();
+            if (id == undefined) {
+                showModel("Error", "请选中表格数据之后进行删除")
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/delete',
+                data: JSON.stringify({'id': id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag) {
+                        loadTable();
+                        $("#detailModal").modal('hide');
+                        showModel("", data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+                    $("#detailModal").modal('hide');
+                },
+                error: function () {
+                    showModel("", "Data delete failed")
+                    $("#detailModal").modal('hide');
+                }
+            });
+        });
+        $("#detailModal").on("click", ".btn-light", function () {
+            var id = $("#hidden_id").val();
+            var tag = $("#select").val();
+            var model_name = $("#model_select").val();
+            if (id == undefined) {
+                showModel("Error", "请选中表格数据之后进行删除")
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/api/rerun',
+                data: JSON.stringify({'id': id, 'tag': tag, 'model': model_name}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag) {
+                        $("#detailModal").modal('hide');
+                        loadTable();
+                        showModel("", "re run done")
+                    } else {
+                        showModel("", "re run failed " + data.message)
+                    }
+                    loadTable();
+                    $("#detailModal").modal('hide');
+                },
+                error: function () {
+                    showModel("", "re run failed")
+                    $("#detailModal").modal('hide');
+                }
+            });
+        });
+        $("#log-btn").click(function () {
+            var log_id = $("#log_record").val();
+            if (log_id == undefined) {
+                showModel("Error", "请选中日志id后查看")
+                return;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/api/get_log',
+                data: JSON.stringify({'log_id': log_id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag) {
+                        $("#logtail").val(data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+
+                },
+                error: function () {
+                    showModel("", "Data delete failed")
+                }
+            });
+        });
+        $("#delete-btn").click(function () {
+            var id = $("#hidden_id").val();
+            if (id == undefined) {
+                showModel("Error", "请选中表格数据之后进行删除")
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/delete',
+                data: JSON.stringify({'id': id}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag) {
+                        loadTable();
+                        showModel("", data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+
+                },
+                error: function () {
+                    showModel("", "Data delete failed")
+                }
+            });
+        });
+        $("#detailModal").on("click", ".btn-success", function () {
+            // 点击确定按钮后的操作
+            var id = $("#hidden_id").val();
+            var title = $("#title").val();
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var result = $("#result").val();
+            var expected = $("#expected").val();
+            var tag = $("#select").val();
+            var model_name = $("#model_select").val();
+            // $.post("/api/update", {
+            //     id: id,
+            //     prompt: prompt,
+            //     expected: expected
+            // }, function (data, status) {
+            //     alert("Data Updated Successfully");
+            //     loadTable();
+            // });
+            var requestData = JSON.stringify({'id': id, 'title': title, 'prompt': prompt, 'expected': expected, 'tag': tag, 'model': model_name, 'answer': answer, 'result': result})
+            console.log(requestData)
+            $.ajax({
+                type: 'POST',
+                url: '/api/update',
+                data: requestData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                    if (data.flag) {
+                        loadTable();
+                        $("#detailModal").modal('hide');
+                        showModel("", data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+                    $("#detailModal").modal('hide');
+                },
+                error: function () {
+                    showModel("", "Data update failed")
+                    $("#detailModal").modal('hide');
+                }
+            });
+        });
+
+        $("#detailModal").on("click", ".btn-primary", function () {
+            // 点击确定按钮后的操作
+            var id = $("#hidden_id").val();
+            var title = $("#title").val();
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var result = $("#result").val();
+            var expected = $("#expected").val();
+            var tag = $("#select").val();
+            var model_name = $("#model_select").val();
+            // $.post("/api/update", {
+            //     id: id,
+            //     prompt: prompt,
+            //     expected: expected
+            // }, function (data, status) {
+            //     alert("Data Updated Successfully");
+            //     loadTable();
+            // });
+            var requestData = JSON.stringify({'prompt': prompt, 'title': title, 'expected': expected, 'tag': tag, 'model': model_name, 'answer': answer, 'result': result})
+            console.log(requestData)
+            $.ajax({
+                type: 'POST',
+                url: '/api/update',
+                data: requestData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+
+                    if (data.flag) {
+                        loadTable();
+                        $("#detailModal").modal('hide');
+                        showModel("", data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+                    $("#detailModal").modal('hide');
+                },
+                error: function () {
+                    showModel("", "Data update failed");
+                    $("#detailModal").modal('hide');
+                }
+            });
+        });
+
+        $("#update-btn").click(function () {
+            var id = $("#hidden_id").val();
+            var title = $("#title").val();
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var result = $("#result").val();
+            var expected = $("#expected").val();
+            var tag = $("#select").val();
+            var model_name = $("#model_select").val();
+            // $.post("/api/update", {
+            //     id: id,
+            //     prompt: prompt,
+            //     expected: expected
+            // }, function (data, status) {
+            //     alert("Data Updated Successfully");
+            //     loadTable();
+            // });
+            var requestData = JSON.stringify({'id': id, 'title': title, 'prompt': prompt, 'expected': expected, 'tag': tag, 'model': model_name, 'answer': answer, 'result': result})
+            console.log(requestData);
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/update',
+                data: requestData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.flag) {
+                        loadTable();
+                        showModel("", data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+
+                },
+                error: function () {
+                    showModel("", "Data delete failed")
+                }
+            });
+        });
+        $("#run-btn").click(function () {
+            var id = $("#hidden_id").val();
+            var title = $("#title").val();
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var result = $("#result").val();
+            var expected = $("#expected").val();
+            var tag = $("#global_select").val();
+            var model_name = $("#global_model_select").val();
+            if (tag == undefined) {
+                showModel("Error", "未选择标签数据集");
+                return
+            }
+            // $.post("/api/update", {
+            //     id: id,
+            //     prompt: prompt,
+            //     expected: expected
+            // }, function (data, status) {
+            //     alert("Data Updated Successfully");
+            //     loadTable();
+            // });
+            var requestData = JSON.stringify({'id': id, 'title': title, 'prompt': prompt, 'expected': expected, 'tag': tag, 'model': model_name, 'answer': answer, 'result': result})
+            console.log(requestData)
+            $("#compareState").val("开始重新评测[" + tag + "]数据集,请耐心等待")
+            $.ajax({
+                type: 'POST',
+                url: '/api/run',
+                data: requestData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    if (data.flag) {
+                        loadLogIds();
+                        loadTable();
+                        showModel("", data.message)
+                        $("#compareState").val(data.message)
+                    } else {
+                        showModel("", data.message)
+                    }
+
+                },
+                error: function () {
+                    showModel("", "Data delete failed")
+                }
+            });
+        });
+        // $('#global_select').on('change', function () {
+        //     var selectedValue = $(this).val();
+        //     // alert('你选择了标签' + selectedValue);
+        //     var prompt = $("#prompt").val();
+        //     var answer = $("#answer").val();
+        //     var tag = selectedValue
+        //     var model_name = $("#model_select").val();
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/set_tag',
+        //         data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+        //         contentType: "application/json; charset=utf-8",
+        //         dataType: "json",
+        //         success: function (data) {
+        //             console.log(data)
+        //         },
+        //         error: function () {
+        //             showModel("", "set tag failed")
+        //         }
+        //     });
+        // });
+        $('#global_select').on('change', function () {
+            var selectedValue = $(this).val();
+            // alert('你选择了标签' + selectedValue);
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var tag = selectedValue
+            var model_name = $("#model_select").val();
+            $.ajax({
+                type: 'POST',
+                url: '/set_tag',
+                data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                },
+                error: function () {
+                    showModel("", "set tag failed")
+                }
+            });
+        });
+        // $('#global_model_select').on('change', function () {
+        //     var selectedValue = $(this).val();
+        //     // alert('你选择了模型' + selectedValue);
+        //     var prompt = $("#prompt").val();
+        //     var answer = $("#answer").val();
+        //     var tag = $("#select").val();
+        //     var model_name = selectedValue
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '/set_model',
+        //         data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+        //         contentType: "application/json; charset=utf-8",
+        //         dataType: "json",
+        //         success: function (data) {
+        //             console.log(data);
+        //         },
+        //         error: function () {
+        //             showModel("", "set model_name failed")
+        //         }
+        //     });
+        // });
+        $('#global_model_select').on('change', function () {
+            var selectedValue = $(this).val();
+            // alert('你选择了模型' + selectedValue);
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var tag = $("#select").val();
+            var model_name = selectedValue
+            $.ajax({
+                type: 'POST',
+                url: '/set_model',
+                data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function () {
+                    showModel("", "set model_name failed")
+                }
+            });
+        });
+        $("#uploadForm").on("submit", function (e) {
+            e.preventDefault(); // 阻止默认提交行为
+            var formData = new FormData(this); // 创建FormData对象
+            console.log(formData);
+            setDefaultTagAndModel();
+            $("#compareState").val("开始调用模型评测数据，请耐心等待");
+            $.ajax({
+                url: "/upload",
+                type: "POST",
+                data: formData,
+                // dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if (data.flag) {
+                        // $("#result").html(data.message);
+                        loadLogIds();
+                        loadTable()
+                        showModel("", data.message)
+                        $("#display").html(data.message);
+                        $("#compareState").val(data.message)
+                    } else {
+                        $("#display").html("<div class='alert alert-danger'>" + data.message + "</div>");
+                    }
+                }
+            });
+            return false;
+        });
+
+        $("#set-model-btn").click(function () {
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var tag = $("#select").val();
+            var model_name = $("#model_select").val();
+            $.ajax({
+                type: 'POST',
+                url: '/set_model',
+                data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    loadTable();
+                    showModel("", data.msg)
+                },
+                error: function () {
+                    showModel("", "Data save failed")
+                }
+            });
+        });
+        $("#set-tag-btn").click(function () {
+            var prompt = $("#prompt").val();
+            var answer = $("#answer").val();
+            var tag = $("#select").val();
+            var model_name = $("#model_select").val();
+            $.ajax({
+                type: 'POST',
+                url: '/set_tag',
+                data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    loadTable();
+                    showModel("", data.msg)
+                },
+                error: function () {
+                    showModel("", "Data save failed")
+                }
+            });
+        });
+
+        $('#myTable tbody').on('click', 'tr', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+                selectedRow = null;
+            } else {
+                $('#myTable tbody tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                selectedRow = $(this).index();
+                var id = $(this).find('td:eq(0)').text();
+                var title = $(this).find('td:eq(1)').text();
+                var prompt = $(this).find('td:eq(2)').text();
+                var answer = $(this).find('td:eq(3)').text();
+                var result = $(this).find('td:eq(4)').text();
+                var expected = $(this).find('td:eq(5)').text();
+                var tag = $(this).find('td:eq(6)').text();
+                var model = $(this).find('td:eq(7)').text();
+                $("#detailModal").modal();
+                $("#hidden_id").val(id);
+                $("#title").val(title);
+                $("#prompt").val(prompt);
+                $("#answer").val(answer);
+                $("#result").val(result);
+                $("#expected").val(expected);
+                $("#select").val(tag);
+                $("#model_select").val(model);
+                // alert('Selected row: ' + id + "|" + tag + " |" + model);
+
+
+            }
+        });
+
+
+        // 搜索输入框键盘释放事件
+        $('#searchInput').on('keyup', function () {
+            var value = $(this).val().toLowerCase();
+            $('#myTable tbody tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+        $('#selectpageSize').change(function () {
+            pageSize = parseInt($(this).val());
+            console.log("pageSize");
+            console.log(pageSize);
+            $("#pagesize").val(pageSize + '');
+            loadTable();
+        });
+
+    });
+
+    function loadTable(currentPage = 1) {
+        var pagesize = $("#pagesize").val()
+        console.log(pagesize)
+        $.ajax({
+            url: "/api/table",
+            type: "POST",
+            data: JSON.stringify({'page': currentPage, 'page_size': parseInt(pagesize)}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                if (data.flag) {
+                    $("#table-body").empty();
+                    $(".pagination").empty();
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        var row = "<tr>" +
+                            "<td class='td'>" + data.data[i].id + "</td>" +
+                            "<td class='td3'>" + data.data[i].title + "</td>" +
+                            "<td class='td' style='display: none'>" + data.data[i].prompt + "</td>" +
+                            "<td class='td' style='display: none'>" + data.data[i].answer + "</td>" +
+                            "<td class='td'>" + data.data[i].result + "</td>" +
+                            "<td class='td' style='display: none'>" + data.data[i].expected + "</td>" +
+                            // "<td class='td' style='display: none'>" + data.data[i].tag + "</td>" +
+                            "<td class='td2' style='display: none'>" + data.data[i].tag + "</td>" +
+                            "<td class='td' style='display: none'>" + data.data[i].model + "</td>" +
+                            // "<td class='td' style='display: none'>" + data.data[i].model + "</td>" +
+                            +"</tr>";
+                        $("#table-body").append(row);
+                    }
+
+                    var numPages = Math.ceil(data.total / parseInt(pagesize));
+
+                    for (var i = 1; i <= numPages; i++) {
+                        var pageLink = "<li><a href='#' onclick='loadTable(" + i + ")'>" + i + "</a></li>";
+                        $(".pagination").append(pageLink);
+                    }
+
+
+                } else {
+                    $("#display").html("<div class='alert alert-danger'>" + data.message + "</div>");
+                }
+            }
+        });
+
+    }
+
+    function showModel(title, message) {
+        // 动态设置弹窗标题和内容
+        $("#myModal .modal-title").text(title);
+        $("#myModal .modal-body").html(message + "<br><br><span id='countdown'></span>");
+        var seconds = 2;
+        var countdownTimer = setInterval(function () {
+            seconds--;
+            $('#countdown').text("关闭倒计时：" + seconds + " 秒");
+            if (seconds <= 0) {
+                // 倒计时结束，关闭模态框
+                clearInterval(countdownTimer);
+                $("#myModal").modal('hide');
+            }
+        }, 1000);
+        $("#myModal").modal();
+    }
+
+    function setDefaultTagAndModel() {
+        var prompt = $("#prompt").val();
+        var answer = $("#answer").val();
+        var tag = $("#select").val();
+        var model_name = $("#model_select").val();
+        $.ajax({
+            type: 'POST',
+            url: '/set_tag',
+            data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+            success: function (data) {
+                console.log(" set tag " + tag + " ok")
+            },
+            error: function () {
+                showModel("", "Data save failed")
+            }
+        });
+
+        var prompt = $("#prompt").val();
+        var answer = $("#answer").val();
+        var tag = $("#select").val();
+        var model_name = $("#model_select").val();
+        $.ajax({
+            type: 'POST',
+            url: '/set_model',
+            data: JSON.stringify({'prompt': prompt, 'answer': answer, "tag": tag, "model": model_name}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log(" set model " + model_name + " ok")
+            },
+            error: function () {
+                showModel("", "set model failed")
+            }
+        });
+
+
+    }
+
+    function loadLogIds() {
+        $.ajax({
+            type: 'GET',
+            url: '/logs',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                if (data.flag) {
+                    var options = data.data;
+                    $('#log_record').empty()
+                    $.each(options, function (index, value) {
+                        $('#log_record').append($('<option>').text(value));
+                    });
+                }
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    }
+
+</script>

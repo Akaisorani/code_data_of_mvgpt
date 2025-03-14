@@ -1,0 +1,5 @@
+tokenizers==0.12.1
+requests
+./transformers-4.28.1
+shortuuid
+ray
