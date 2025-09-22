@@ -1,0 +1,11 @@
+{
+    "start_time": "2023-09-01 00:00:49",
+    "end_time": "2023-11-27 23:49:44",
+    "columns": [
+        "timestamp",
+        "member_id",
+        "shop_category_id",
+        "predicates_exp",
+        "shop_category"
+    ]
+}

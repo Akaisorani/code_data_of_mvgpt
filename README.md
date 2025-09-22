@@ -8,4 +8,5 @@ Using pre-trained natural language models and Bayesian networks, fine-tune the t
 `utils/preprocess_csv_text.py`: build train and test file: mv-train and mv-test\
 `utils/clean_data.py`: clean the data from original query log\
 `bn_train_code/generate_features.py`: feature extraction\
-`bn_train_code/train_bn.py`: training bayesian network
+`bn_train_code/train_bn.py`: training bayesian network\
+`datasets`: queries of Advertising-festival, Advertising-summer, and XuetangX
